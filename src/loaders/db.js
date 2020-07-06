@@ -1,10 +1,9 @@
 import mongoose from "mongoose"
 import {Logger} from "../services/Logger"
+import {CONST,CONFIG} from "../../config"
 
 export const registerDB = () => {
-    const 
-        { DB_ACC,DB_HOST,DB_PSW,DB_USERNAME } = process.env,
-        uri = `mongodb://${DB_USERNAME}:${DB_PSW}@${DB_HOST}/${DB_ACC}`
+    const uri = CONFIG.MONGO_URI
     mongoose.connect(uri,{
         useNewUrlParser: true,
         useUnifiedTopology: true

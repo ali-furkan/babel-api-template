@@ -1,6 +1,6 @@
 import express from "express"
 import Container from "typedi"
-import {CONST} from "../config"
+import {CONST, CONFIG} from "../config"
 import {Logger} from "./services/Logger"
 import { registerAPI,registerDB } from "./loaders"
 
@@ -13,10 +13,9 @@ import { registerAPI,registerDB } from "./loaders"
 class App {
     constructor() {
         Container.set(CONST.APP,this.#app)
-        Container.set(CONST.PORT,this.#PORT)
+        Container.set(CONST.PORT,CONFIG.PORT)
     }
     #app = express()
-    #PORT = process.env.PORT||process.argv[2]||3000
     /**
      * Initializes the App and Establishing a connection to world
      * 
@@ -24,8 +23,8 @@ class App {
      * @returns App
      */
     async init() {
-        await this.#app.listen(this.#PORT,()=>{
-            Logger.log("start",`App started at ${this.#PORT} PORT`)
+        await this.#app.listen(CONFIG.PORT,()=>{
+            Logger.log("start",`App started at ${CONFIG.PORT} PORT`)
         })
         registerAPI()
         registerDB()

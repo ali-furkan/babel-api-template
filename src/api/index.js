@@ -1,6 +1,6 @@
 import "./controller"
 import Container from "typedi"
-import {CONST} from "../../config"
+import {CONST,CONFIG} from "../../config"
 import {Logger} from "../services/Logger"
 
 export const Router = {
@@ -12,7 +12,7 @@ export const Router = {
             const prefix = Reflect.getMetadata("prefix",controller)
             const routes = Reflect.getMetadata("routes",controller);
             routes.forEach(route => {
-                app[route.requestMethod](CONST.ROOT_PATH+prefix+route.path,...route.middlewares,async (req,res)=>{
+                app[route.requestMethod](CONFIG.ROOT_PATH+prefix+route.path,...route.middlewares,async (req,res)=>{
                     try {
                         const response = await instance[route.methodName](req,res)
                         res.statusCode = response.code||200
