@@ -7,6 +7,7 @@ export const METHOD = method => {
       const routes = Reflect.getMetadata('routes', target.constructor);
       routes.push({
         requestMethod: method,
+        middlewares: [],
         path,
         methodName: propertyKey
       });

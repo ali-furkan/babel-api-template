@@ -1,6 +1,6 @@
 import Container from "typedi"
 import {CONST} from "../constants"
-import {METHOD} from "../utils/method"
+import {METHOD} from "../libs/method"
 
 export const Controller = prefix => {
     return target => {

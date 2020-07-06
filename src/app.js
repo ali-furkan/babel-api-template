@@ -1,8 +1,8 @@
 import express from "express"
 import Container from "typedi"
 import {CONST} from "./constants"
-import Logger from "./services/Logger"
-import { registerAPI,registerDB,registerSocket } from "./loaders"
+import {Logger} from "./services/Logger"
+import { registerAPI,registerDB } from "./loaders"
 
 /**
  * 🌎 Server App Structure
@@ -23,14 +23,13 @@ class App {
      * 🚨 Warn: Call only once
      * @returns App
      */
-    init() {
-        const Server = this.#app.listen(this.#PORT,()=>{
+    async init() {
+        await this.#app.listen(this.#PORT,()=>{
             Logger.log("start",`App started at ${this.#PORT} PORT`)
         })
         registerAPI()
         registerDB()
-        registerSocket(Server)
-        return {...this,Server}
+        return this
     }
 }
 

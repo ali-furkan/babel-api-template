@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import Logger from "../services/Logger"
+import {Logger} from "../services/Logger"
 
 export const registerDB = () => {
     const 
@@ -10,6 +10,6 @@ export const registerDB = () => {
         useUnifiedTopology: true
     })
     mongoose.connection
-        .on("error", Logger.log.bind(Logger.log,"error"))
+        .on("error", ()=>Logger.log("error","Mongoose Error: Connection Failed"))
         .once("open",()=>Logger.log("start","Connected to MongoDB"))
 }
