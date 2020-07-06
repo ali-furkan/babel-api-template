@@ -1,6 +1,6 @@
 import "./controller"
 import Container from "typedi"
-import {CONST} from "../constants"
+import {CONST} from "../../config"
 import {Logger} from "../services/Logger"
 
 export const Router = {

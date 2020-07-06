@@ -1,6 +1,6 @@
 import express from "express"
 import Container from "typedi"
-import {CONST} from "./constants"
+import {CONST} from "../config"
 import {Logger} from "./services/Logger"
 import { registerAPI,registerDB } from "./loaders"
 

@@ -1,5 +1,5 @@
 import Container from "typedi"
-import {CONST} from "../constants"
+import {CONST} from "../../config"
 import {METHOD} from "../libs/method"
 
 export const Controller = prefix => {
