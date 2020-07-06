@@ -1,6 +1,7 @@
 import { EventEmitter} from "events"
 import chalk from "chalk"
 import moment from "moment"
+import { CONFIG } from "../../config";
 
 /**
  * @typedef {"success"|"error"|"warn"|"awaiting"|"start"|"pause"|"complete"|"note"|"debug"} TYPES
@@ -68,6 +69,4 @@ class LoggerInstance extends EventEmitter {
     }
 }
 
-export const Logger = new LoggerInstance({
-    monitoring: true
-}) 
+export const Logger = new LoggerInstance(CONFIG.LOG) 
